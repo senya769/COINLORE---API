@@ -112,7 +112,7 @@ public class TokenService implements TokenDAO {
                 if (resultSet.next()) {
                     double oldPrice = resultSet.getDouble("price_usd");
                     double percentChangedValue = ((oldPrice - newPrice) / oldPrice) * 100;
-                    if (Math.abs(percentChangedValue) >= 0.01) {
+                    if (Math.abs(percentChangedValue) >= 1) {
                         return true;
                     }
                 }
