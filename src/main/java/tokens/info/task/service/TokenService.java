@@ -24,7 +24,7 @@ public class TokenService implements TokenDAO {
     private final String DB_URL = "jdbc:mysql://localhost:3306/test";
     private final String DB_USERNAME = "root";
     private final String DB_PASSWORD = "200357707";
-    private final String COINLORE_API_URL = "https://api.coinlore.net/api/tickers/";
+    private final String COINLORE_API_URL = "https://api.coinlore.net/api/tickers/id=?";
 
     private Map<Long, String> notifyUsers = new HashMap<>();
     private final List<Token> availableTokens = new ArrayList<>();
@@ -135,7 +135,7 @@ public class TokenService implements TokenDAO {
         try {
             RestTemplate restTemplate = new RestTemplate();
             for (Token token : availableTokens) {
-                Token token1 = restTemplate.getForObject("https://api.coinlore.net/api/ticker/?id=" + token.getId(), Token[].class)[0];
+                Token token1 = restTemplate.getForObject(COINLORE_API_URL + token.getId(), Token[].class)[0];
                 if (checkValidPrice(token1.getPriceUsd(), token1.getId())) {
                     String s = this.notifyUsers.get(token1.getId());
                     if (s != null) {
