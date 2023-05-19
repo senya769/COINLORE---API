@@ -24,7 +24,7 @@ public class TokenService implements TokenDAO {
     private final String DB_URL = "jdbc:mysql://localhost:3306/test";
     private final String DB_USERNAME = "root";
     private final String DB_PASSWORD = "200357707";
-    private final String COINLORE_API_URL = "https://api.coinlore.net/api/tickers/id=?";
+    private final String COINLORE_API_URL = "https://api.coinlore.net/api/ticker/id=?";
 
     private Map<Long, String> notifyUsers = new HashMap<>();
     private final List<Token> availableTokens = new ArrayList<>();
